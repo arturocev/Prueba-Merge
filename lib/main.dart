@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mandangon/screens/login.dart';
 import 'package:mandangon/screens/registro.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'metodos_lr/firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.android
+  );
   runApp(const MandangonApp());
 }
 
@@ -88,7 +94,7 @@ class MainEstado extends State<Main> {
                     heroTag: "btn1",
                   ),
                 ),
-                // Botón de Registro
+                // Boton de Registro
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: FloatingActionButton.extended(
@@ -107,7 +113,7 @@ class MainEstado extends State<Main> {
                       ),
                     ),
                     backgroundColor: const Color.fromARGB(255, 80, 255, 220),
-                    heroTag: "btn2",
+                    heroTag: "btn3",
                   ),
                 ),
               ],

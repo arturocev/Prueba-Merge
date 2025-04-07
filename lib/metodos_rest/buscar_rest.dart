@@ -13,10 +13,10 @@ void buscarRestaurantes(String query, List<dynamic> todosRestaurantes,
   setState(() {
     listaVisible.clear(); // LIMPIAMOS PRIMERO
     if (query.isEmpty) {
-      listaVisible.addAll(
-          obtenerAleatorios(todosRestaurantes, 10)); // Añadimos aleatorios
+      listaVisible.addAll(obtenerAleatorios(todosRestaurantes, 10)); // Añadimos aleatorios
     } else {
       listaVisible.addAll(resultados); // Añadimos resultados filtrados
     }
   });
 }
+
