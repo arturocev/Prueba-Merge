@@ -1,6 +1,7 @@
 import 'aleatorio_rest.dart';
 
-void buscarRestaurantes(String query, List<dynamic> todosRestaurantes, Function setState, List<dynamic> listaVisible) {
+void buscarRestaurantes(String query, List<dynamic> todosRestaurantes,
+    Function setState, List<dynamic> listaVisible) {
   final resultados = todosRestaurantes.where((rest) {
     final nombre = rest['rest_nom'].toString().toLowerCase();
     final tipo = rest['rest_tipo_com'].toString().toLowerCase();
@@ -18,3 +19,4 @@ void buscarRestaurantes(String query, List<dynamic> todosRestaurantes, Function 
     }
   });
 }
+

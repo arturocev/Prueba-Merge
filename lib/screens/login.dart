@@ -58,7 +58,8 @@ class ISEstado extends State<IniciarSesion>
                   // Logo
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
-                    child: const Image(image: AssetImage("assets/logo.png"),width: 300),
+                    child: const Image(
+                        image: AssetImage("assets/logo.png"), width: 300),
                   ),
 
                   // Campo de texto: Email
@@ -108,12 +109,23 @@ class ISEstado extends State<IniciarSesion>
                           print("Botón de inicio de sesión presionado");
                         }
 
-                        int? usuarioId = await inicioSesion(
+                        var usuarioData = await inicioSesion(
                             controladorEmail.text,
                             controladorPass.text,
                             context);
-
-                        if (usuarioId == null) {
+                        /*  if (usuarioData != null) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PantallaPrincipal(
+                                usuarioId: usuarioData['id'],
+                                usuarioNombre:
+                                    usuarioData['nombre'], // Pasar el nombre
+                              ),
+                            ),
+                          );
+                        }*/
+                        if (usuarioData == null) {
                           showDialog(
                             // ignore: use_build_context_synchronously
                             context: context,
@@ -134,8 +146,11 @@ class ISEstado extends State<IniciarSesion>
                             // ignore: use_build_context_synchronously
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  PantallaPrincipal(usuarioId: usuarioId),
+                              builder: (context) => PantallaPrincipal(
+                                usuarioId: usuarioData['id'],
+                                usuarioNombre: usuarioData['nombre'],
+                                nombreUsuario: '',
+                              ),
                             ),
                           );
                         }
@@ -199,7 +214,8 @@ class ISEstado extends State<IniciarSesion>
                       child: const Text(
                         "¿Olvidaste la contraseña?",
                         style: TextStyle(
-                          color: Color.fromARGB(255, 243, 33, 33), fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 243, 33, 33),
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
